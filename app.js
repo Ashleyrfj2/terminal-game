@@ -11,9 +11,10 @@ console.log(`Congratulations ${username}, you have just created  ${company} LLC,
 let money = 0
 let network = 0
 
-function getRandom(max){
-    return Math.floor(Math.random() * (max.length));
-}
+
+//updated
+
+
 
 function lifeScenario(money){
     if(money == 0){
@@ -61,14 +62,38 @@ choicePath1()
 lifeScenario()
 lifeScenario2()
 
-const outcomes = [
-    {text: "You run into an old friend and restablished a connection.", results:{ network:10}},
+//Added the first two c
+//format needs to be same on each line, even if 0
+
+
+
+ const outcomes = [
+    {text: "You run into an old friend and restablished a connection.", results:{ network:10,money:0}},
     {text: "You finished a bootcamp, met lots of new people, and recieved a lot of new business.", results:{network:20, money:12}},
-    {text: "You get sick and rot away at home. You gain nothing.", results:{network:0}},
-    {text: "You get a role in a reality show, now your name and likeness is vaulable.", result:{money:25, network:25}},
+    {text: "You get sick and lost a day of work.", results:{network:0, money:0}},
+    {text: "You get a role in a reality show, now your name and likeness is vaulable.", results:{money:25, network:25}},
 ]
- 
-//console.log(getRandom (outcomes))
+//function
+function getRandom(max){
+    return Math.floor(Math.random()*max);
+}
+
+const result = getRandom(outcomes.length);
+const finalStep = outcomes[result];
+
+money += finalStep.results.money;
+network += finalStep.results.network;
+console.log(finalStep.text);
+
+
+ //Read outcomes above * and also displays result
+
+
+
+
+
+
+
 console.log(`You have the opportunity to quit your full time job to focus on building your company.`)
 const choice2 = prompt(`What is your choice? Type 1 if you will quit type 2 if will stay.`)
 switch(choice2){
